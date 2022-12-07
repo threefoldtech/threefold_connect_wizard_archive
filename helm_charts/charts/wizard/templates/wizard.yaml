@@ -20,4 +20,4 @@ spec:
             - name: http
               containerPort: 80
       imagePullSecrets:
-        - name: {{ include "backend.CONFIG_NAME" . }}
+        - name: {{ include "wizard.CONFIG_NAME" . }}

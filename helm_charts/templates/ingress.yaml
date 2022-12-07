@@ -10,19 +10,19 @@ spec:
   tls:
     - hosts:
     {{- range .Values.ingress.hosts }}
-    - {{ .host.domain }}
+        - {{ .host.domain }}
     {{- end }}
-    secretName: {{ template "releaseName" . }}
+      secretName: {{ template "releaseName" . }}
   rules:
-  {{- range .Values.ingress.hosts }}
-- host: {{ .host.domain }}
-  http:
-    paths:
-      - path: {{ .host.path }}
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ $.Release.Name}}-{{ .host.chart }}
-            port:
-              number: 80
-  {{- end }}
+{{- range .Values.ingress.hosts }}
+  - host: {{ .host.domain }}
+    http:
+      paths:
+        - path: {{ .host.path }}
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ $.Release.Name}}-{{ .host.chart }}
+              port:
+                number: 80
+{{- end }}
