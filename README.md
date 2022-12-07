@@ -28,3 +28,10 @@ This codebase is currently Vue2 with Vuetify (will be changed in the future to V
 ```shell
 yarn && yarn serve
 ```
+
+### HELM
+
+```  
+helm upgrade --install dev-wizard helm_charts -f helm_charts/values/values-dev.yaml 
+--set global.WIZARD_IMAGE="threefoldjimber/threefold-connect-wizard:staging-latest" -n jimber
+```
