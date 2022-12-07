@@ -3,8 +3,8 @@ ingress:
     - host:
         domain: wizard-jimber.org
         path: /
-        chart: frontend
-        service: production-frontend
+        chart: wizard
+        service: production-wizard
 
 acme:
   email: lennert.defauw@jimber.org
