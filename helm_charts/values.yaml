@@ -1,0 +1,16 @@
+ingress:
+  hosts:
+    - host:
+        domain: wizard-staging..jimbertesting.be
+        path: /
+        chart: frontend
+        service: dev-frontend
+
+acme:
+  email: lennert.defauw@jimber.org
+
+global:
+  WIZARD_IMAGE: ""
+  DOCKER_USERNAME: ""
+  DOCKER_PASSWORD: ""
+  DOCKER_REGISTRY: "ghcr.io"
