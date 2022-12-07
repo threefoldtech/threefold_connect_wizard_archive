@@ -13,7 +13,7 @@ jobs:
       contents: read
       packages: write
     env:
-      IMAGE_NAME: threefoldjimber/threefold-connect-wizard/wizard
+      IMAGE_NAME: threefoldjimber/threefold-connect-wizard
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -60,5 +60,5 @@ jobs:
           echo ${{ secrets.STAGING_KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
       - name: Upgrade cluster
         run: |
-          helm upgrade --install staging-wizard helm_charts -f helm_charts/values/values-dev.yaml --set global.WIZARD_IMAGE="threefoldjimber/threefold-connect-wizard/wizard:staging-${{ github.sha }}" --set global.DOCKER_USERNAME="lennertdefauw1" --set global.DOCKER_REGISTRY="ghcr.io"  --set global.DOCKER_PASSWORD="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" -n jimber
+          helm upgrade --install staging-wizard helm_charts -f helm_charts/values/values-dev.yaml --set global.WIZARD_IMAGE="threefoldjimber/threefold-connect-wizard:staging-${{ github.sha }}" --set global.DOCKER_USERNAME="lennertdefauw1" --set global.DOCKER_REGISTRY="ghcr.io"  --set global.DOCKER_PASSWORD="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" -n jimber
 
