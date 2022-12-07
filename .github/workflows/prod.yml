@@ -57,4 +57,4 @@ jobs:
           echo $(ls ${HOME}/.kube)
       - name: Upgrade cluster
         run: |
-          helm upgrade --install production-wizard helm_charts -f helm_charts/values/values-production.yaml --set global.WIZARD_IMAGE=threefoldjimber/threefold-connect-wizard-production:-${{ github.sha }} -n jimber
+          helm upgrade --install production-wizard helm_charts -f helm_charts/values/values-production.yaml --set global.WIZARD_IMAGE=threefoldjimber/threefold-connect-wizard:production:-${{ github.sha }} -n jimber
