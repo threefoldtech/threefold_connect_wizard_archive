@@ -1,4 +1,4 @@
-FROM ubuntu:latest as builder
+FROM ubuntu:20.04 as builder
 RUN apt update
 
 # Is optional, but if you are not going to use this then you will need to install
