@@ -17,7 +17,7 @@ spec:
         imagePullPolicy: Always
         name: {{ include "wizard.FULL_NAME" . }}
         ports:
-          - name: http
-            containerPort: 80
+        - name: http
+          containerPort: 3001
       imagePullSecrets:
         - name: {{ include "wizard.CONFIG_NAME" . }}
