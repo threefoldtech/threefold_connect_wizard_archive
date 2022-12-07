@@ -1,5 +1,9 @@
 FROM ubuntu:latest as builder
-RUN apt-get update
+RUN apt update
+
+# Is optional, but if you are not going to use this then you will need to install
+# 'gnupg' for nodesource so it can setup node install
+RUN apt install -y build-essential make python3 gcc g++ --fix-missing
 
 RUN apt-get -y install curl
 
@@ -18,7 +22,7 @@ RUN apt-get update && apt-get install yarn
 WORKDIR /app
 COPY package.json package.json
 COPY yarn.lock yarn.lock
-RUN yarn install
+RUN yarn install --ignore-engines
 COPY . .
 RUN yarn build
 
