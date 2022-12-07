@@ -13,11 +13,11 @@ spec:
         app: {{ include "wizard.FULL_NAME" . }}
     spec:
       containers:
-        - image: {{ include "wizard.IMAGE" . }}
-          imagePullPolicy: Always
-          name: {{ include "wizard.FULL_NAME" . }}
-          ports:
-            - name: http
-              containerPort: 80
+      - image: {{ include "wizard.IMAGE" . }}
+        imagePullPolicy: Always
+        name: {{ include "wizard.FULL_NAME" . }}
+        ports:
+          - name: http
+            containerPort: 80
       imagePullSecrets:
         - name: {{ include "wizard.CONFIG_NAME" . }}
