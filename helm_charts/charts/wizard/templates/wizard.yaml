@@ -19,5 +19,3 @@ spec:
         ports:
         - name: http
           containerPort: 3001
-      imagePullSecrets:
-        - name: {{ include "wizard.CONFIG_NAME" . }}

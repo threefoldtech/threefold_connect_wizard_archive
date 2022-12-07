@@ -11,6 +11,3 @@ acme:
 
 global:
   WIZARD_IMAGE: ""
-  DOCKER_USERNAME: ""
-  DOCKER_PASSWORD: ""
-  DOCKER_REGISTRY: "ghcr.io"
