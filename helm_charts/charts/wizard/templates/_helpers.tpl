@@ -4,7 +4,7 @@
 
 
 {{- define "wizard.CONFIG_NAME" -}}
-{{- printf "%s-%s" .Release.Name "docker-config-wizard"  -}}
+{{- printf "%s-%s" .Release.Name "docker-config"  -}}
 {{- end -}}
 
 
