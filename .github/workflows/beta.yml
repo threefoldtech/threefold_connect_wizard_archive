@@ -2,7 +2,7 @@ name: Production
 
 on:
   push:
-    tags: [ 'v[0-9]+.[0-9]+.[0-9]+' ]
+    tags: [ 'beta-v[0-9]+.[0-9]+.[0-9]+' ]
 
 jobs:
   build_wizard:
@@ -36,7 +36,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ env.IMAGE_NAME }}:production-${{ github.sha }},${{ env.IMAGE_NAME }}:production-latest
+          tags: ${{ env.IMAGE_NAME }}:beta-${{ github.sha }},${{ env.IMAGE_NAME }}:beta-latest
           labels: ${{ steps.meta.outputs.labels }}
 
   deploy:
@@ -47,10 +47,10 @@ jobs:
       - name: Setting configs
         run: |
           mkdir ${HOME}/.kube
-          echo ${{ secrets.PRODUCTION_KUBE_KEY }} | base64 --decode > ${HOME}/.kube/jimber-production.key
-          echo ${{ secrets.PRODUCTION_KUBE_CRT }} | base64 --decode > ${HOME}/.kube/jimber-production.crt
-          echo ${{ secrets.PRODUCTION_KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
+          echo ${{ secrets.BETA_KUBE_KEY }} | base64 --decode > ${HOME}/.kube/jimber-beta.key
+          echo ${{ secrets.BETA_KUBE_CRT }} | base64 --decode > ${HOME}/.kube/jimber-beta.crt
+          echo ${{ secrets.BETA_KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
           echo $(ls ${HOME}/.kube)
       - name: Upgrade cluster
         run: |
-          helm upgrade --install production-wizard helm_charts -f helm_charts/values/values-production.yaml --set global.WIZARD_IMAGE=threefoldjimber/threefold-connect-wizard-production:-${{ github.sha }} -n jimber
+          helm upgrade --install beta-wizard helm_charts -f helm_charts/values/values-beta.yaml --set global.WIZARD_IMAGE=threefoldjimber/threefold-connect-wizard-beta:-${{ github.sha }} -n jimber

@@ -1,0 +1,13 @@
+ingress:
+  hosts:
+    - host:
+        domain: wizard-beta.jimbertesting.be
+        path: /
+        chart: wizard
+        service: beta-wizard
+
+acme:
+  email: lennert.defauw@jimber.org
+
+global:
+  WIZARD_IMAGE: ""
