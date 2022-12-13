@@ -1,11 +1,9 @@
 ingress:
   hosts:
-    - host:
-        domain: wizard-beta.jimbertesting.be
-        path: /
-        chart: wizard
-        service: beta-wizard
-
+    - name: wizard-beta.jimbertesting.be
+      service: beta-wizard
+      path: /
+      port: 80
 acme:
   email: lennert.defauw@jimber.org
 

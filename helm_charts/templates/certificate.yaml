@@ -1,13 +1,14 @@
 apiVersion: cert-manager.io/v1
-kind: Certificate
+kind: Issuer
 metadata:
   name: {{ template "releaseName" . }}
 spec:
-  dnsNames:
-    {{- range $host := .Values.ingress.hosts }}
-    - {{ $host.host.domain }}
-    {{- end }}
-  secretName: {{ template "releaseName" . }}
-  issuerRef:
-    name: {{ template "releaseName" . }}
-    kind: Issuer
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: {{ .Values.acme.email }}
+    privateKeySecretRef:
+      name: letsencrypt-cluster-issuer-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
