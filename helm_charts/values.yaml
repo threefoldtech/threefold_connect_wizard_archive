@@ -1,10 +1,10 @@
 ingress:
   hosts:
     - host:
-        domain: wizard-staging..jimbertesting.be
+        domain: wizard-staging.jimbertesting.be
         path: /
-        chart: frontend
-        service: dev-frontend
+        chart: wizard
+        service: staging-wizard
 
 acme:
   email: lennert.defauw@jimber.org
